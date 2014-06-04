@@ -50,7 +50,7 @@ function get_storages(){
   }, function(err){
     if(err) throw err
     var dates = Object.keys(months).sort()
-    dates = dates.filter(function(d){ return d <= '2014-02' })
+    dates = dates.filter(function(d){ return d <= '2014-05' })
     months = dates.map(function(d){ return months[d] })
     var opts = { columns: Object.keys(months[0]), header: true }
     csv().from.array(months, {columns: true})
@@ -65,8 +65,8 @@ function storage(id, cb){
       + id
       + '&dur_code=M' // monthly
       + '&sensor_num=15' // sensor 15 is storage
-      + '&start_date=2000/01/01'
-      + '&end_date=2014/03/01'
+      + '&start_date=1990/01/01'
+      + '&end_date=2014/06/01'
   }, function(err, res, body){
     if(err && cb) return cb(err)
     if(res.statusCode !== 200) return cb(new Error(body))
